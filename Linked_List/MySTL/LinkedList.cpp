@@ -1,4 +1,4 @@
-#include "../MySTL/LinkedList.h"
+#include "LinkedList.h"
 
 MyLinkedList::MyLinkedList()
 {
