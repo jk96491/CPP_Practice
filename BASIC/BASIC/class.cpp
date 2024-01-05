@@ -8,7 +8,7 @@ private:
 	string password;
 	int age;
 
-public:
+public: 
 	void set_user_info(string id, string password, int age);
 	void set_id(string id);
 	void set_password(string password);
