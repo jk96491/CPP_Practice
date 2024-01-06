@@ -1,4 +1,5 @@
 #include "management_program.h"
+#include <cstring>
 
 void ManagementProgram::display_menu()
 {
@@ -104,19 +105,55 @@ void ManagementProgram::execute_remove_member()
 		cout << id << "의 회원정보가 삭제되었습니다." << endl;
 	else
 		cout << "회원 삭제 오류 : " << result << endl;
+}
 
+void ManagementProgram::load_member_info()
+{
+	string csvFilePath = "member.csv";
+	ifstream file(csvFilePath);
+
+	if (!file.is_open()) {
+		std::cerr << "Error opening file: " << csvFilePath << std::endl;
+		return;
+	}
+
+	string line;
+	while (std::getline(file, line)) {
+		istringstream iss(line);
+		string token;
+
+		int count = 0;
+
+		string id;
+		string password;
+		string name;
+		int age = 0;
+
+		while (std::getline(iss, token, ',')) {
+			switch (count)
+			{
+			case 0: id = token; break;
+			case 1: password = token; break;
+			case 2: name = token; break;
+			case 3: age = stoi(token); break;
+			}
+
+			count++;
+		}
+		MemberInfo* memberinfo = new MemberInfo;
+		memberinfo->set_memeber_info(id, password, name, age);
+
+		member_manager.add_member(memberinfo);
+	}
 }
 
 void ManagementProgram::execute()
 {
+
+	this->load_member_info();
+
 	int user_input = 0;
-
-	member_manager.add_member("aaaa", "1234", "raptor1", 33);
-	member_manager.add_member("bbbb", "2345", "raptor2", 31);
-	member_manager.add_member("cccc", "3456", "raptor3", 27);
-	member_manager.add_member("dddd", "4567", "raptor4", 21);
-	member_manager.add_member("eeee", "5678", "raptor5", 39);
-
+	bool exit = false;
 	while (true)
 	{
 		display_menu();
@@ -128,8 +165,11 @@ void ManagementProgram::execute()
 		case 2: execute_search_member_info(); break;
 		case 3: execute_display_all_member(); break;
 		case 4: execute_remove_member(); break;
-		case 5: break;
+		case 5: exit = true; break;
 		}
+
+		if (exit == true)
+			break;
 	}
 
 	cout << "프로그램을 종료합니다." << endl;

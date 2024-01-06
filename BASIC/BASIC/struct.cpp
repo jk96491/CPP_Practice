@@ -30,6 +30,7 @@ int main(void)
 	return 0;
 }
 
+// 값으로 접근할때는 .
 void print_user_info1(UserInfo userInfo)
 {
 	cout << "ID : " << userInfo.id << endl;
@@ -37,6 +38,7 @@ void print_user_info1(UserInfo userInfo)
 	cout << "age : " << userInfo.age << endl;
 }
 
+// 주소로 접근할때는 ->
 void print_user_info2(UserInfo* userInfo)
 {
 	cout << "ID : " << userInfo->id << endl;

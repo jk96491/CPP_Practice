@@ -34,8 +34,8 @@ public:
 
 int main() 
 {
-    int sum_int = add(3, 5);
-    double sum_double = add(2.5, 4.7);
+    int sum_int = add<int>(3, 5);
+    double sum_double = add<double>(2.5, 4.7);
 
     cout << "int µ¡»ù: " << sum_int << endl;
     cout << "double µ¡»ù: " << sum_double << endl;

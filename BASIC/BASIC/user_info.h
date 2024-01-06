@@ -10,8 +10,8 @@ private:
 	int* age;
 
 public:
-	UserInfo();
-	~UserInfo();
+	UserInfo();		// 持失切
+	~UserInfo();	// 社瑚切
 
 public:
 	void set_user_info(string id, string password, int age);

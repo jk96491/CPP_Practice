@@ -12,7 +12,7 @@ int main(void)
 
 	int* p1 = &a;	// p1은 a의 주소를 가르킴
 	int* p2 = &b;	// p2는 b의 주소를 가르킴
-
+	
 	cout << "p1의 주소 : " << p1 << ", p1의 값 : " << *p1 << endl;
 	cout << "p2의 주소 : " << p2 << ", p2의 값 : " << *p2 << endl;
 	cout << endl;
@@ -23,12 +23,7 @@ int main(void)
 
 	cout << endl;
 
-	int a = 10;
-	int b = 20;
-
 	swap2(&a, &b);
-
-
 	cout << "swap2 결과" << endl;
 	print(a, b);
 
