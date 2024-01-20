@@ -17,22 +17,26 @@ public:
         z = _z;
     }
 
-    Vector operator+(Vector& other)
+    friend Vector operator+(Vector& lVlaue, Vector& rVlaue)
     {
-        Vector new_vector(x + other.x, y + other.y, z + other.z);
+        Vector new_vector(lVlaue.x + rVlaue.x, lVlaue.y + rVlaue.y, lVlaue.z + rVlaue.z);
         return new_vector;
     }
 
-    Vector operator-(Vector& other)
+    friend Vector operator-(Vector& lVlaue, Vector& rVlaue)
     {
-        Vector new_vector(x - other.x, y - other.y, z - other.z);
+        Vector new_vector(lVlaue.x - rVlaue.x, lVlaue.y - rVlaue.y, lVlaue.z - rVlaue.z);
         return new_vector;
     }
 
-    Vector operator*(float scalar)
+    friend Vector operator*(float scalar, Vector& vec)
     {
-        Vector new_vector(x * scalar, y * scalar, z * scalar);
-        return new_vector;
+        return Vector(vec.x * scalar, vec.y * scalar, vec.z * scalar);
+    }
+
+    friend Vector operator*(Vector& vec, float scalar)
+    {
+        return Vector(vec.x * scalar, vec.y * scalar, vec.z * scalar);
     }
 
     float distance()
@@ -43,9 +47,11 @@ public:
     Vector normalize()
     {
         float dist = distance();
-        Vector new_vector(x / dist, y / dist, z / dist);
 
-        return new_vector;
+        if (dist != 0)
+            return Vector(x / dist, y / dist, z / dist);
+        else
+            return Vector(0, 0, 0);
     }
 
     friend void print_vector(Vector* vec);

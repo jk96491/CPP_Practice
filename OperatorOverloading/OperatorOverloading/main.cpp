@@ -14,7 +14,8 @@ int main() {
     cout << "Difference" << endl;
     print_vector(&diff);
 
-    Vector scaled = v1 * 2.5;
+    Vector scaled = 2.f * v1;
+    scaled = scaled * 3.f;
     cout << "Scaled"<< endl;
     print_vector(&scaled);
 
