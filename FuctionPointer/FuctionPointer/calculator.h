@@ -31,5 +31,4 @@ public:
         messagePrinter(msg, result);
         return result;
     }
-
 };

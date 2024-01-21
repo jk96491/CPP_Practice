@@ -45,16 +45,10 @@ MemberInfo* ManagementProgram::get_member_info(string id)
 {
 	MemberInfo* memberinfo = member_manager.get_member_info(id);
 
-	return memberinfo;
 	if (nullptr == memberinfo)
 		cout << id << "는 없는 회원 입니다.." << endl;
 	else
-	{
-		cout << "------- id : " << memberinfo->get_id() << " -------" << endl;
-		cout << "비밀번호 : " << memberinfo->get_password() << endl;
-		cout << "이름 : " << memberinfo->get_name() << endl;
-		cout << "나이 : " << memberinfo->get_age() << endl;
-	}
+		display_member_info(memberinfo);
 }
 
 void ManagementProgram::display_member_info(MemberInfo* memberinfo)
@@ -149,7 +143,6 @@ void ManagementProgram::load_member_info()
 
 void ManagementProgram::execute()
 {
-
 	this->load_member_info();
 
 	int user_input = 0;
